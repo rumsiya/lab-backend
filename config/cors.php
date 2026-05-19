@@ -5,9 +5,10 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://star-lab.netlify.app'],
+    'allowed_origins' => ['*'],
     // Production example:
     // 'allowed_origins' => ['https://your-site.netlify.app'],
+
 
     'allowed_origins_patterns' => [],
 

@@ -12,6 +12,9 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ChatController;
 
+Route::options('/{any}', function () {
+    return response('', 200);
+})->where('any', '.*');
 
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
