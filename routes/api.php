@@ -15,6 +15,11 @@ use App\Http\Controllers\ChatController;
 Route::options('/{any}', function () {
     return response('', 200);
 })->where('any', '.*');
+Route::get('/test', function () {
+    return response()->json([
+        'success' => true
+    ]);
+});
 
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
