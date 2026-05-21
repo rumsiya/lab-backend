@@ -20,7 +20,7 @@ RUN composer install --no-dev --optimize-autoloader
 # RUN php artisan config:clear
 # RUN php artisan route:clear
 # RUN php artisan cache:clear
-RUN php artisan optimize:clear
+# RUN php artisan optimize:clear
 
 EXPOSE 10000
 
