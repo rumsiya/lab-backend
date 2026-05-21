@@ -1,30 +1,32 @@
 FROM php:8.2-cli
 
+# Install dependencies
 RUN apt-get update && apt-get install -y \
     unzip \
     curl \
     git \
     libzip-dev \
+    libpq-dev \
     zip
 
-RUN docker-php-ext-install zip
+# Install PHP extensions (IMPORTANT FIX HERE)
+RUN docker-php-ext-install zip pdo pdo_pgsql
 
+# Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
+# Copy project
 COPY . .
 
+# Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-
-
-# RUN php artisan route:clear
-# RUN php artisan cache:clear
-# RUN php artisan optimize:clear
+# Permissions (important for Laravel)
+RUN chmod -R 775 storage bootstrap/cache
 
 EXPOSE 10000
 
-CMD php artisan serve --host=0.0.0.0 --port=10000
-
-CMD php artisan migrate --force && php artisan serve --host=dpg-d87hgs99rddc738f3100-a --port=5432
+# ONLY ONE CMD (correct way)
+CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=10000
