@@ -5,7 +5,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['*', 'https://star-lab.netlify.app/'],
     // Production example:
     // 'allowed_origins' => ['https://your-site.netlify.app'],
 
