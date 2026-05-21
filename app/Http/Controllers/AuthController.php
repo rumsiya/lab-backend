@@ -63,6 +63,7 @@ class AuthController extends Controller
                     'age' =>$validated['age'],
                 ];
 
+
                 $user = User::create($data);
                 $token = JWTAuth::fromUser($user);
                 return response()->json([
