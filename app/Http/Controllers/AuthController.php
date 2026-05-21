@@ -44,7 +44,7 @@ class AuthController extends Controller
     public function register(Request $request){
         try{
             $validated = $request->validate([
-                'name' => 'required|min:3|max:10',
+                'username' => 'required|min:3|max:10',
                 'email' => 'required|unique:users,email',
                 'password' =>  'required|min:5|max:10',
                 'phone' => 'required|digits:10',
@@ -54,7 +54,7 @@ class AuthController extends Controller
 
             if($validated){
                 $data = [
-                    'name' => $validated['name'],
+                    'name' => $validated['username'],
                     'email' => $validated['email'],
                     'password' => Hash::make($validated['password']),
                     'role' => 1,
