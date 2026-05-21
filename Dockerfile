@@ -29,4 +29,4 @@ RUN chmod -R 775 storage bootstrap/cache
 EXPOSE 10000
 
 # ONLY ONE CMD (correct way)
-CMD php artisan serve --host=0.0.0.0 --port=10000
+CMD php artisan route:cache && php artisan serve --host=0.0.0.0 --port=10000
