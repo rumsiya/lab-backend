@@ -18,7 +18,7 @@ Route::options('/{any}', function () {
         ->header('Access-Control-Allow-Headers', '*');
 })->where('any', '.*');
 
-Route::get('/test', function () {
+Route::get('/check', function () {
     return response()->json([
         'success' => true
     ]);
